@@ -26,27 +26,24 @@
 
 <body>
   <div id="captcha-container">
-    <!-- Add your CAPTCHA here: -->
-    Hello world!
+    <canvas id="captcha-canvas" width="390px" height="300px">
+      <!-- Your CAPTCHA will be rendered here -->
+      <p>Your browser does not support the HTML5 canvas tag.</p>
 
-    <!-- We've added a sample button. Feel free to remove it: -->
-    <button id="solve">
-      Solve!
-    </button>
+    </canvas>
   </div>
 
-  <script type="text/javascript">
-    (function(window, document){
-      // This is how you tell the parent window that the CAPTCHA was successful.
-      function captchaSuccess() {
-        window.top.postMessage("success", '*');
-      }
-
-      // Your CAPTCHA code goes here, we've added a simple example below:
-      document.getElementById('solve')
-           .addEventListener('click', () => captchaSuccess());
-
-    })(window, document);
-  </script>
+  <script type="text/javascript" src="dist/Picross/creator.js"></script>
+  <script type="text/javascript" src="dist/Picross/puzzle-cell.js"></script>
+  <script type="text/javascript" src="dist/Picross/puzzle-line.js"></script>
+  <script type="text/javascript" src="dist/Picross/puzzle.js"></script>
+  <script type="text/javascript" src="dist/Picross/picross_renderer.js"></script>
+  <script type="text/javascript" src="dist/Picross/solver.js"></script>
+  <script type="text/javascript" src="dist/Picross/utility.js"></script>
+  <script type="text/javascript" src="dist/Utility/Vector2.js"></script>
+  <script type="text/javascript" src="dist/Utility/Rect2.js"></script>
+  <script type="text/javascript" src="dist/LightsOut/lights-out.js"></script>
+  <script type="text/javascript" src="dist/LightsOut/lights-out_renderer.js"></script>
+  <script type="text/javascript" src="dist/index.js"></script>
 </body>
 </html>
