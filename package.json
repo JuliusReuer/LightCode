@@ -10,6 +10,6 @@
     "compile": "tsc -b",
     "fix": "npm run format && npm run compile",
     "predeploy": "npm run compile",
-    "deploy": "gh-pages -d captcha/dist"
+    "deploy": "gh-pages -d ."
   }
 }
