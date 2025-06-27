@@ -1,11 +1,15 @@
 {
+  "homepage": "https://juliusreuer.github.io/LightCode/",
   "devDependencies": {
+    "gh-pages": "^6.3.0",
     "prettier": "^3.6.1",
     "typescript": "^5.8.3"
   },
   "scripts": {
     "format": "prettier --write ./captcha/src",
     "compile": "tsc -b",
-    "fix": "npm run format && npm run compile"
+    "fix": "npm run format && npm run compile",
+    "predeploy": "npm run compile",
+    "deploy": "gh-pages -d captcha/dist"
   }
 }
