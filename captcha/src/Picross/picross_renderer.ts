@@ -87,7 +87,9 @@ class PicrossRenderer {
     //#region Draw hints
     // Draw row hints
     this.ctx.font = `${this.scale * 0.5}px Arial`;
-    this.ctx.fillStyle = "#000000";
+    this.ctx.fillStyle = "#00ff00";
+    this.ctx.strokeStyle = "#000000";
+    this.ctx.lineWidth = 5;
     this.ctx.textAlign = "center";
     this.ctx.textBaseline = "middle";
     this.ctx.beginPath();
@@ -108,6 +110,12 @@ class PicrossRenderer {
           new Vector2(this.scale, this.scale),
         );
 
+        this.ctx.strokeText(
+          hints[j].toString(),
+          hint_rect.x + this.scale * 0.5,
+          hint_rect.y + this.scale * 0.5,
+        );
+
         this.ctx.fillText(
           hints[j].toString(),
           hint_rect.x + this.scale * 0.5,
@@ -115,7 +123,6 @@ class PicrossRenderer {
         );
       }
     }
-    this.ctx.fill();
 
     // Draw column hints
     this.ctx.beginPath();
@@ -136,6 +143,12 @@ class PicrossRenderer {
           new Vector2(this.scale, this.scale),
         );
 
+        this.ctx.strokeText(
+          hints[j].toString(),
+          hint_rect.x + this.scale * 0.5,
+          hint_rect.y + this.scale * 0.5,
+        );
+
         this.ctx.fillText(
           hints[j].toString(),
           hint_rect.x + this.scale * 0.5,
@@ -143,7 +156,6 @@ class PicrossRenderer {
         );
       }
     }
-    this.ctx.fill();
     //#endregion
 
     if (solution) {
