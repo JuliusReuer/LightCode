@@ -2,6 +2,23 @@
   let canvas: HTMLCanvasElement = document.getElementById(
     "captcha-canvas",
   ) as HTMLCanvasElement;
+  //#region getting puzzle settings
+  let stored_width_string = localStorage.getItem("puzzle_width");
+  let stored_width = stored_width_string
+    ? Number.parseInt(stored_width_string)
+    : 5;
+
+  let stored_height_string = localStorage.getItem("puzzle_height");
+  let stored_height = stored_height_string
+    ? Number.parseInt(stored_height_string)
+    : 5;
+
+  let stored_steps_string = localStorage.getItem("puzzle_steps");
+  let stored_steps = stored_steps_string
+    ? Number.parseInt(stored_steps_string)
+    : 3;
+  //#endregion
+
   let ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
 
   ctx.fillStyle = "#4287f5";
@@ -14,7 +31,7 @@
   ctx.fillText("Solve the puzzle by clicking on the buttons", 195, 25);
 
   let c = new Creator();
-  let puzzle = c.createRandom(5, 5);
+  let puzzle = c.createRandom(stored_width, stored_height);
 
   let renderer = new PicrossRenderer(
     puzzle,
@@ -22,7 +39,7 @@
     new Rect2(new Vector2(0, 50), new Vector2(390, 250)),
   );
   renderer.render();
-  let lights = new LightsOut(puzzle, GenerationMode.Steps, 3);
+  let lights = new LightsOut(puzzle, GenerationMode.Steps, stored_steps);
   lights.generate();
   let lightsRenderer = new LightsOutRenderer(renderer, lights, ctx);
   await lightsRenderer.load();
